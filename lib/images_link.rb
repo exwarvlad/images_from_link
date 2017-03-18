@@ -1,7 +1,7 @@
 require 'httparty'
 require 'nokogiri'
 require 'uri'
-require_relative 'HandlerLink'
+require_relative 'handler_link'
 
 class ImagesLink
 

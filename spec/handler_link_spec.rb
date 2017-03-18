@@ -1,7 +1,7 @@
 require 'rspec'
 
-require_relative '../lib/HandlerLink.rb'
-require_relative '../lib/ImagesLink.rb'
+require_relative '../lib/handler_link.rb'
+require_relative '../lib/images_link.rb'
 
 describe 'handler_links' do
   # проверяю метод get_host_link на то, что вернет имя хоста урла

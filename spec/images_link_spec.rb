@@ -1,7 +1,7 @@
 require 'rspec'
 
-require_relative '../lib/ImagesLink.rb'
-require_relative '../lib/HandlerLink.rb'
+require_relative '../lib/images_link.rb'
+require_relative '../lib/handler_link.rb'
 
 describe 'ImagesLink' do
 

@@ -1,6 +1,6 @@
 require "images_from_link/version"
-require 'HandlerLink'
-require 'ImagesLink'
+require 'handler_link'
+require 'images_link'
 
 module ImagesFromLink
   # выводит каритнки по переданному урлу

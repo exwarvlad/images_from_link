@@ -4,7 +4,7 @@ class HandlerLink
   # получает урл - отдает домен
   def get_host_link(link)
     uri = URI.parse(link)
-    "#{uri.scheme}://" + uri.host
+    "#{uri.scheme}://#{uri.host}"
   end
 
   def handler_links(arra_links, link)
