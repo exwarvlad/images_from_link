@@ -33,7 +33,7 @@ class ImagesLink
   # returns all images url with tags img['src']
   def images_from_img_tag
     img_array = []
-    # пробегаю по тегам img (meta og:images...), хватаю урл и закидываю в @links
+    # пробегаю по тегам img (meta og:images...), хватаю урл и закидываю в img_array
     @doc.xpath('//img').each do |img|
       if img['src'] != nil
         array = [img['src'].to_s]
