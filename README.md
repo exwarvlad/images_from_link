@@ -28,7 +28,7 @@ ImagesFromLink.get_images('https://www.google.com')
 =>
 [
 "https://www.google.com/textinputassistant/tia.png",
- "https://www.google.com/images/nav_logo229.png",
+"https://www.google.com/images/nav_logo229.png",
 "https://www.google.com/images/branding/googlelogo/1x/googlelogo_white_background_color_272x92dp.png"
 ]
 ```

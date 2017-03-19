@@ -4,18 +4,18 @@ require_relative '../lib/handler_link.rb'
 require_relative '../lib/images_link.rb'
 
 describe 'handler_links' do
-  # проверяю метод get_host_link на то, что вернет имя хоста урла
+  # check the get_host_link method for returning the hostname of the URL
   it 'get_host_link return host name' do
-    handler_link = HandlerLink.new
+    handler_link = HandlerLink
     link = 'https://www.google.com.ua/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=rspec&*'
     link2 = 'http://www.google.com.ua/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=rspec&*'
     expect(handler_link.get_host_link(link)).to eq 'https://www.google.com.ua'
     expect(handler_link.get_host_link(link2)).to eq 'http://www.google.com.ua'
   end
 
-  # проверяю что метод handler_prefix_link подставляет нужные префикс
+  # check that the method handler_prefix_link add the necessary prefix
   it 'handler_prefix_link' do
-    handler_link = HandlerLink.new
+    handler_link = HandlerLink
     link = handler_link.get_host_link('http://goodprogrammer.ru/users/sign_in')
     link2 = 'https://moikrug.ru/vacancies/1000032025'
     href = '/favicon.png'
@@ -28,21 +28,21 @@ describe 'handler_links' do
 
   # проверяю работу методов handler_link и remove_unless_symbols
   it 'handler_link and remove_unless_symbols' do
-    handler_link = HandlerLink.new
+    handler_link = HandlerLink
     link = 'https://www.google.com.ua/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=rspec&*'
-    arra = ['background:url(/images/nav_logo229.png)']
-    handler_link.handler_links(arra, link)
-    expect(arra).to eq ['background:url(https://www.google.com.ua/images/nav_logo229.png)']
+    array = ['background:url(/images/nav_logo229.png)']
+    handler_link.handler_links(array, link)
+    expect(array).to eq ['background:url(https://www.google.com.ua/images/nav_logo229.png)']
 
-    handler_link.remove_unless_symbols(arra)
-    expect(arra).to eq ['https://www.google.com.ua/images/nav_logo229.png']
+    handler_link.remove_unless_symbols(array)
+    expect(array).to eq ['https://www.google.com.ua/images/nav_logo229.png']
   end
 
   # проверяю remove_unless_link на удаление невалидных ссылок картинок
   it 'remove_unless_link' do
-    handler_link = HandlerLink.new
-    arra = ['http://trololo.jpg', 'http://trololo.jpgqw', 'http://trololo.jpg?qwe', 'trololo']
-    handler_link.remove_unless_link(arra)
-    expect(arra).to eq ['http://trololo.jpg', 'http://trololo.jpg?qwe']
+    handler_link = HandlerLink
+    array = ['http://trololo.jpg', 'http://trololo.jpgqw', 'http://trololo.jpg?qwe', 'trololo']
+    handler_link.remove_unless_link(array)
+    expect(array).to eq ['http://trololo.jpg', 'http://trololo.jpg?qwe']
   end
 end

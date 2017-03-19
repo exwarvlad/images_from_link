@@ -1,14 +1,14 @@
-class HandlerLink
+module HandlerLink
   FORMAT_IMG = ["jpg", "jpeg", "png", "gif"]
 
-  # получает урл - отдает домен
-  def get_host_link(link)
+  # gets the url, returns domain
+  def self.get_host_link(link)
     uri = URI.parse(link)
     "#{uri.scheme}://#{uri.host}"
   end
 
-  def handler_links(arra_links, link)
-    arra_links.each do |url|
+  def self.handler_links(array_links, link)
+    array_links.each do |url|
       if url.include?("(/")
         uri = get_host_link(link)
 
@@ -18,9 +18,9 @@ class HandlerLink
     end
   end
 
-  # добавляет scheme, если это href
-  def handler_prefix_link(host_link, link)
-    abort 'в качестве аргументов передайте строки' unless host_link.is_a?(String) || link.is_a?(String)
+  # adds scheme if this href
+  def self.handler_prefix_link(host_link, link)
+    abort 'expect strings params' unless host_link.is_a?(String) || link.is_a?(String)
 
     if link[0] == '/' && link[1] != '/'
       host_link + link
@@ -32,8 +32,8 @@ class HandlerLink
     end
   end
 
-  def remove_unless_symbols(arra_images_links)
-    arra_images_links.each do |image_url|
+  def self.remove_unless_symbols(array_images_links)
+    array_images_links.each do |image_url|
       if (image_url[0..3] != "http" || image_url[0..3] != "www.") && image_url.include?("(")
         position = image_url.index("(")
         image_url.reverse!
@@ -44,14 +44,15 @@ class HandlerLink
     end
   end
 
-  def remove_global_unless_symbols(arra_images_links)
-    arra_images_links.each { |link| link.delete!("(,;'')") }
+  def self.remove_global_unless_symbols(array_images_links)
+    array_images_links.each { |link| link.delete!("(,;'')") }
   end
 
-  def remove_unless_link(arra_link)
+  # remove link if link not valid
+  def self.remove_unless_link(array_links)
 
-    arra_link.each_with_index do |link, index|
-      arra_link[index] = "" if link[0..3] != "http"
+    array_links.each_with_index do |link, index|
+      array_links[index] = "" if link[0..3] != "http"
 
       index_ending = nil
 
@@ -59,12 +60,12 @@ class HandlerLink
         index_ending = i if link.include?(i)
       end
 
-        unless index_ending == nil
-          position = link.index(index_ending)
-          arra_link[index] = "" if (link[position + index_ending.size] =~ /[a-z]/)
-        end
+      unless index_ending == nil
+        position = link.index(index_ending)
+        array_links[index] = "" if (link[position + index_ending.size] =~ /[a-z]/)
+      end
 
     end
-    arra_link.delete("")
+    array_links.delete("")
   end
 end
