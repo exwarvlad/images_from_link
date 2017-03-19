@@ -26,7 +26,7 @@ describe 'handler_links' do
     expect(handler_link.handler_prefix_link(link2, href3)).to eq 'https://habrastorage.org/getpro/moikrug/uploads/company/100/005/255/1/logo/medium_f19113ec4c4fdac7af49f748ba45fedc.png'
   end
 
-  # проверяю работу методов handler_link и remove_unless_symbols
+  # check the work of the methods handler_link and remove_unless_symbols
   it 'handler_link and remove_unless_symbols' do
     handler_link = HandlerLink
     link = 'https://www.google.com.ua/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=rspec&*'
@@ -38,7 +38,7 @@ describe 'handler_links' do
     expect(array).to eq ['https://www.google.com.ua/images/nav_logo229.png']
   end
 
-  # проверяю remove_unless_link на удаление невалидных ссылок картинок
+  # check the work of the remove_unless_link for destroy not valid links
   it 'remove_unless_link' do
     handler_link = HandlerLink
     array = ['http://trololo.jpg', 'http://trololo.jpgqw', 'http://trololo.jpg?qwe', 'trololo']
