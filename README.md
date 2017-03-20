@@ -1,5 +1,7 @@
 # ImagesFromLink
 
+[![Gem Version](https://badge.fury.io/rb/images_from_link.svg)](https://badge.fury.io/rb/images_from_link)
+
 Extracts images by link.
 
 ## Installation
